@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: #000000;
+}
+.bg-s{
+    background-color: #6359ce;
+}
+
+    </style>
+<div class="container my-4">
+    <div class="card-header bg-s">
+        <h3 style="color: white">
+            Order Items
+        </h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 pt-3">
+            {% include 'user/usersidebar.html' %}
+        </div>
+        <div class="col-md-9">
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Inv No.</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in orderitems %}
+                        <tr>
+                            <td>{{ item.invoice_no }}</td>
+                            <td>{{ item.item }}</td>
+                            <td>{{ item.qty }}</td>
+                            <td>
+                                <img width="90px" src="/media/{{ item.image }}">
+                            </td>
+                            <td>$ {{ item.price }}</td>
+                            <td>$ {{ item.total }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pb-0"></div>
+</div>
+{% endblock %}

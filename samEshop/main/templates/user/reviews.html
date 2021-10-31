@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: none;
+            color: #000000;
+        }
+        .bg-s{
+            background-color: #6359ce;
+        }
+    </style>
+<div class="container my-4">
+    <div class="card-header bg-s">
+        <h3 style="color: white">
+            Your Reviews
+        </h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 pt-3">
+            {% include 'user/usersidebar.html' %}
+        </div>
+        <div class="col-md-9">
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Review Text</th>
+                            <th>Review Rating</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for review in reviews %}
+                        <tr>
+                            <td><a href="/product/{{ review.product.slug }}/{{ review.product.id }}">{{ review.product.title }}</a></td>
+                            <td>
+                                <img style="width: 100px" src="/media/{{ review.product.productattribute_set.first.image }}" class="card-img-top" alt="{{review.product.title}}">
+                            </td>
+                            <td>$ {{ review.product.productattribute_set.first.price }}</td>
+                            <td> {{ review.review_text }}</td>
+                            <td> {{ review.review_rating }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pb-0"></div>
+</div>
+{% endblock %}

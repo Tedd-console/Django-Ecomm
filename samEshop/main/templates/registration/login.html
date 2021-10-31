@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: #000000;
+}
+.bg-s{
+    background-color: #6359ce;
+}
+    </style>
+<div class="wow fadeInUp" data-wow-delay="0.3s">
+    <div class="container my-4">
+        <div class="card-header bg-s">
+            <h3 style="color: white">
+                Login
+            </h3>
+        </div>
+        <hr>
+        <table class="table table-bordered">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <tr>
+                    <td colspan="3">
+                        <input type="submit" value="Login" class="btn btn-primary float-end">
+                    </td>
+                </tr>
+            </form>
+        </table>
+            <p>Forgot Password? <a href="{% url 'password_reset' %}" class="btn btn-outline-danger"> Reset Your Password</a></p>
+            <p>Create Account <a href="{% url 'signup' %}" class="btn btn-outline-danger"> Sign Up Here</a></p>
+    </div>
+</div>
+
+
+{% endblock %}

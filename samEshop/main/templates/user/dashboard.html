@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: none;
+            color: #000000;
+        }
+        .bg-s{
+            background-color: #6359ce;
+        }
+    </style>
+<div class="container my-4">
+    <div class="card-header bg-s">
+        <h3 style="color: white">
+            My Dashboard
+        </h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 pt-3">
+            {% include 'user/usersidebar.html' %}
+        </div>
+        <div class="col-md-9">
+            <div>
+                <canvas id ="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="pb-0"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript">
+    const labels = {{ monthNumber|safe }};
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Orders By Month',
+            backdropColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: {{ totalOrders }},
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data,
+        options: {}
+    };
+
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
+{% endblock %}

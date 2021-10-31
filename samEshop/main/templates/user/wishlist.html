@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: none;
+            color: #000000;
+        }
+        .bg-s{
+            background-color: #6359ce;
+        }
+    </style>
+<div class="container my-4">
+    <div class="card-header bg-s">
+        <h3 style="color: white">
+            Your Wishlist
+        </h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3 pt-3">
+            {% include 'user/usersidebar.html' %}
+        </div>
+        <div class="col-md-9">
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for wl in wlist %}
+                        <tr>
+                            <td><a href="/product/{{ wl.product.slug }}/{{ wl.product.id }}">{{ wl.product.title }}</a></td>
+                            <td>
+                                <img style="width: 100px" src="/media/{{ wl.product.productattribute_set.first.image }}" class="card-img-top" alt="{{wl.product.title}}">
+                            </td>
+                            <td>$ {{ wl.product.productattribute_set.first.price }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pb-0"></div>
+</div>
+{% endblock %}

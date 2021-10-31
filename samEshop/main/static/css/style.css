@@ -1,0 +1,66 @@
+*{
+    font-family: 'source-sans-pro-semibold', sans-serif;
+}
+
+.navbar-custom{
+    background-color: midnightblue;
+}
+.navbar .navbar-nav .nav-item .nav-link.active{
+    color: lightblue;
+}
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link:hover{
+    color: #084298;
+}
+.navbar-brand a:hover{
+    text-decoration: none;
+    color: #1b8dbf;
+}
+.navbar .navbar-nav .nav-item .nav-link.active {
+    text-transform: uppercase;
+}
+
+/*---------------------------------------
+    Register section
+-----------------------------------------*/
+#register {
+    -webkit-background-size: cover;
+    background-size: cover;
+    background: url('../media/images/register-bg.jpg') repeat-y fixed center;
+    color: #ffffff;
+}
+
+#register .form-control {
+  background: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 0px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+#register input {
+  height: 45px;
+}
+
+#register input[type="submit"] {
+  background: #f2545f;
+  border-radius: 100px;
+  border: none;
+  color: #ffffff;
+  letter-spacing: 2px;
+  height: 50px;
+  margin-top: 12px;
+  transition: all 0.4s ease-in-out;
+}
+
+#register input[type="submit"]:hover {
+  background: #ffffff;
+  color: #222;
+}
+.parallax-section {
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+.errorlist li {
+    color: red;
+}

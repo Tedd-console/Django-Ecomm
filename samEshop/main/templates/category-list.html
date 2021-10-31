@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: #000000;
+}
+.bg-s{
+    background-color: #6359ce;
+}
+
+    </style>
+<div class="container my-4">
+    <div class="card-header bg-s">
+        <h3 style="color: white">
+            Categories
+        </h3>
+    </div>
+    <hr>
+    <div class="row">
+    {% if data %}
+        {% for cat in data %}
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-shadow">
+                        <a href="/category-product-list/{{ cat.id }}"><img src="/media/{{ cat.image }}" class="card-img-top" alt="{{ cat.title }}"></a>
+                        <div class="card-body">
+                            <h6 style="font-size: 20px" class="card-text text-center"><a href="#">{{ cat.title }}</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
